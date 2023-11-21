@@ -2,7 +2,13 @@ const express = require("express");
 const cors = require("cors");
 
 const app = express();
+app.use(express.json());
 app.use(cors());
+
+app.get("/test", (req, res) => {
+  // res.json("Bienvenue sur l'API");
+  res.status(300).json({ message: "Bienvenue sur l'API" });
+});
 
 app.get("/", (req, res) => {
   return res.json({
@@ -213,6 +219,11 @@ app.get("/", (req, res) => {
       },
     ],
   });
+});
+
+// ROUTES UNDEFINED
+app.all("*", (req, res) => {
+  res.status(404).json({ message: "Cette route n'existe pas" });
 });
 
 app.listen(process.env.PORT || 3200, () => {
