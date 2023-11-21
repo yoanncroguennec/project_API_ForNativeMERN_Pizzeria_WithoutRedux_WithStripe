@@ -2,15 +2,21 @@ const express = require("express");
 const cors = require("cors");
 
 const app = express();
-app.use(express.json());
 app.use(cors());
+app.use(express.json());
 
-app.get("/test", (req, res) => {
+// const express = require("express");
+// const cors = require("cors");
+
+// const app = express();
+// app.use(cors());
+
+app.get("/", (req, res) => {
   // res.json("Bienvenue sur l'API");
   res.status(300).json({ message: "Bienvenue sur l'API" });
 });
 
-app.get("/", (req, res) => {
+app.get("/products", (req, res) => {
   return res.json({
     products: [
       // CATEGORY - CHEESE
@@ -220,6 +226,10 @@ app.get("/", (req, res) => {
     ],
   });
 });
+
+// app.listen(process.env.PORT || 3200, () => {
+//   console.log("Server started");
+// });
 
 // ROUTES UNDEFINED
 app.all("*", (req, res) => {
