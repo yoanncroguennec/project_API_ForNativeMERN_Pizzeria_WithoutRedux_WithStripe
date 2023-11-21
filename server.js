@@ -6,7 +6,7 @@ app.use(cors());
 
 app.get("/", (req, res) => {
   return res.json({
-    produits: [
+    products: [
       // CATEGORY - CHEESE
       {
         name: "Margherita",
